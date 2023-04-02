@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 
@@ -11,9 +12,17 @@ const Watch = () => {
   const { data } = useMovie(movieId as string);
 
   return (
-    <div className="h-screen w-screen bg-black">
-      <nav
-        className="
+    <>
+      <Head>
+        <title>Watching: {data?.title}</title>
+        <meta
+          name="description"
+          content="Nflix Clone Web App (for personal project purpose)"
+        />
+      </Head>
+      <div className="h-screen w-screen bg-black">
+        <nav
+          className="
           fixed
           w-full
           p-4
@@ -25,23 +34,24 @@ const Watch = () => {
           bg-black
           bg-opacity-70
         "
-      >
-        <AiOutlineArrowLeft
-          className="text-white text-xl md:text-2xl lg:text-3xl cursor-pointer"
-          onClick={() => router.push('/')}
-        />
-        <p className="text-white text-xl md:text-3xl font-bold">
-          <span className="font-light">Watching: </span>
-          {data?.title}
-        </p>
-      </nav>
-      <video
-        autoPlay
-        controls
-        className="h-full w-full"
-        src={data?.videoUrl}
-      ></video>
-    </div>
+        >
+          <AiOutlineArrowLeft
+            className="text-white text-xl md:text-2xl lg:text-3xl cursor-pointer"
+            onClick={() => router.push('/')}
+          />
+          <p className="text-white text-xl md:text-3xl font-bold">
+            <span className="font-light">Watching: </span>
+            {data?.title}
+          </p>
+        </nav>
+        <video
+          autoPlay
+          controls
+          className="h-full w-full"
+          src={data?.videoUrl}
+        ></video>
+      </div>
+    </>
   );
 };
 

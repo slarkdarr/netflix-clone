@@ -1,4 +1,5 @@
 import { NextPageContext } from 'next';
+import Head from 'next/head';
 import { getSession } from 'next-auth/react';
 
 import Navbar from '@/components/Navbar';
@@ -33,6 +34,13 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>Nflix Clone</title>
+        <meta
+          name="description"
+          content="Nflix Clone Web App (for personal project purpose)"
+        />
+      </Head>
       <InfoModal visible={isOpen} onClose={closeModal} />
       <Navbar />
       <Billboard />
