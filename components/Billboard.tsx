@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { BsInfoCircle } from 'react-icons/bs';
 
 import useBillboard from '@/hooks/useBillboard';
+import useInfoModal from '@/hooks/useInfoModal';
 import PlayButton from './PlayButton';
 
 const Billboard = () => {
   const { data } = useBillboard();
+  const { openModal } = useInfoModal();
+
+  const handleOpenModal = useCallback(() => {
+    openModal(data?.id);
+  }, [openModal, data?.id]);
+
   return (
     <div className="relative h-[56.25vw]">
       <video
@@ -63,7 +70,8 @@ const Billboard = () => {
               items-center
               hover:bg-opacity-20
               transition
-          "
+            "
+            onClick={handleOpenModal}
           >
             <BsInfoCircle className="mr-1" />
             More Info
