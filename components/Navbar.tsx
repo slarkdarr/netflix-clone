@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useState } from 'react';
-import { BsBell, BsChevronDown, BsSearch } from 'react-icons/bs';
+import React, { useCallback, useEffect, useState } from 'react';
+import { BsBell, BsChevronDown } from 'react-icons/bs';
 
 import MobileMenu from './MobileMenu';
 import NavbarItem from './NavbarItem';
 import AccountMenu from './AccountMenu';
+import SearchInput from './SearchInput';
 
 const TOP_OFFSET = 66;
 
@@ -81,9 +82,7 @@ const Navbar = () => {
           <MobileMenu visible={showMobileMenu} />
         </div>
         <div className="flex flex-row ml-auto gap-7 items-center">
-          <div className="text-gray-200 hover_text-gray-300 cursor-pointer transition">
-            <BsSearch />
-          </div>
+          <SearchInput />
           <div className="text-gray-200 hover_text-gray-300 cursor-pointer transition">
             <BsBell />
           </div>
